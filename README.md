@@ -1,5 +1,13 @@
 # Getting Started with Create React App
 
+- Alterar Imagem 
+- Alterar Cor de Fundo 
+- Alterar Link de "Learn React" para "https://angular.dev"
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
