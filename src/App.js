@@ -1,28 +1,57 @@
-import logo from './logo.svg';
 import './App.css';
-import Main from './pages/Main/main';
+import { useEffect, useState } from 'react';
+import {api} from './services/api';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Parabéns vc conseguiu iniciar o projeto com o React.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [repos, setRepos] = useState([]);
+  useEffect(() => {
+    async function fetch() {
+      try {
+        const nomeRepo = decodeURIComponent('Jaque-Jaque/aula-armazenamento-Jaqueline');
 
-      <Main />
+        const {data} = await api.get(`/repos/${nomeRepo}`);
+        
+
+        setRepos(props => [{
+          name: data.name,
+          description: data.description,
+        }]);
+
+        console.log({data});  
+      } catch (error) {
+        console.log({error})
+      }
+    }
+
+    fetch();
+  }, []);
+
+
+  return (
+    <div className="container"> 
+        <h1 className='header-name'>Meus repositórios Favoritos</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Respositórios</th>
+                <th scope="col">Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+              {repos.map((repo, i) => (
+                <tr>
+                <th scope="row">{i}</th>
+                <td>{repo.name}</td>
+                <td>{repo.description}</td>
+                </tr>
+              ))}
+            </tbody>
+        </table>
     </div>
   );
+
 }
 
 export default App;

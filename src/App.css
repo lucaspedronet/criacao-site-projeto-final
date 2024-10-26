@@ -1,5 +1,4 @@
-*{
-}
+
 .App {
   margin: 0;
   padding: 0;
@@ -8,6 +7,11 @@
   text-align: center;
 }
 
+.header-name {
+  color: #FFF;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
 body {
   background: #0D2636;
   font-size: 14px;
